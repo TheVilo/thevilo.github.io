@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import sablona from "../../content/categorybody.html?raw";
+
+export async function getStaticPaths() {
+  const kategorie = await getCollection("kategorie");
+  return kategorie.map((k) => ({ params: { slug: k.id }, props: { k } }));
+}
+
+const { k } = Astro.props;
+const body = sablona.replaceAll("__NAZOV__", k.data.nazov);
+---
+<Layout title={`${k.data.nazov} • FKM Karlova Ves`}>
+  <Fragment set:html={body} />
+</Layout>

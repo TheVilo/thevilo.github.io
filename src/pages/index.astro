@@ -1,0 +1,7 @@
+---
+import Layout from "../layouts/Layout.astro";
+import body from "../content/pages/index.html?raw";
+---
+<Layout title={"FKM Karlova Ves — Futbalový klub mládeže | Jedna štvrť. Jeden klub. Jedno srdce."}>
+  <Fragment set:html={body} />
+</Layout>

@@ -1,0 +1,42 @@
+---
+import header from "../partials/header.html?raw";
+import mobilemenu from "../partials/mobilemenu.html?raw";
+import footer from "../partials/footer.html?raw";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = "FKM Karlova Ves — Futbalový klub mládeže",
+  description = "FKM Karlova Ves — futbalový klub mládeže v Bratislave od roku 2000. 300+ aktívnych hráčov, 13 súťažných kategórií, ÚTM licencia 2026–2029. Nábor, letné tábory, tímy U6–U19 a muži.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#E11D2A" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <Fragment set:html={header} />
+    <Fragment set:html={mobilemenu} />
+
+    <slot />
+
+    <Fragment set:html={footer} />
+
+    <script src="/main.js" is:inline></script>
+  </body>
+</html>
