@@ -12,6 +12,9 @@ export default config({
       schema: {
         nazov: fields.slug({ name: { label: "Názov kategórie" } }),
         poradie: fields.integer({ label: "Poradie", defaultValue: 0 }),
+        futbalnetSlug: fields.text({
+          label: "FutbalNet tím (napr. u11-m-a, dospeli-m-a) — prázdne = bez dát",
+        }),
       },
     }),
   },

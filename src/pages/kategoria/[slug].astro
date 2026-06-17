@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import FutbalNet from "../../components/FutbalNet.astro";
 import { getCollection } from "astro:content";
 import sablona from "../../content/categorybody.html?raw";
 
@@ -13,4 +14,5 @@ const body = sablona.replaceAll("__NAZOV__", k.data.nazov);
 ---
 <Layout title={`${k.data.nazov} • FKM Karlova Ves`}>
   <Fragment set:html={body} />
+  <FutbalNet slug={k.data.futbalnetSlug} />
 </Layout>

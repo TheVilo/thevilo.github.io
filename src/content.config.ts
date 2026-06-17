@@ -6,6 +6,7 @@ const kategorie = defineCollection({
   schema: z.object({
     nazov: z.string(),
     poradie: z.number().default(0),
+    futbalnetSlug: z.string().optional().default(""),
   }),
 });
 

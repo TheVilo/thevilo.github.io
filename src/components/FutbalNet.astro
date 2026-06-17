@@ -1,0 +1,58 @@
+---
+interface Props { slug: string; }
+const { slug } = Astro.props;
+const base = `https://sportnet.sme.sk/futbalnet/k/fkm-karlova-ves-bratislava/tim/${slug}`;
+const taby = [
+  { label: "Program", view: "program" },
+  { label: "Výsledky", view: "vysledky" },
+  { label: "Tabuľka", view: "tabulky" },
+  { label: "Súpiska", view: "hraci" },
+];
+---
+{slug && (
+  <section class="section">
+    <div class="container">
+      <h2>Program, výsledky a tabuľka</h2>
+      <p class="lead">Aktuálne súťažné dáta tímu naživo z FutbalNetu (SFZ).</p>
+
+      <div class="fn-embed" style="margin-top:1.2rem;">
+        <div style="display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.8rem;">
+          {taby.map((t, i) => (
+            <button
+              type="button"
+              class={"btn btn-primary" + (i === 0 ? " active" : "")}
+              data-fn={`${base}/${t.view}/`}
+            >{t.label}</button>
+          ))}
+        </div>
+
+        <iframe
+          src={`${base}/${taby[0].view}/`}
+          title="FutbalNet – dáta tímu"
+          loading="lazy"
+          style="width:100%; height:760px; border:1px solid #ddd; border-radius:10px; background:#fff;"
+        ></iframe>
+
+        <p style="margin-top:.8rem; font-size:.9rem;">
+          Ak sa tabuľka nenačíta, otvor ju priamo na FutbalNete:
+          {taby.map((t, i) => (
+            <span>{i > 0 ? " · " : " "}<a href={`${base}/${t.view}/`} target="_blank" rel="noopener">{t.label}</a></span>
+          ))}
+        </p>
+      </div>
+    </div>
+  </section>
+)}
+
+<script is:inline>
+  document.querySelectorAll(".fn-embed").forEach((box) => {
+    const frame = box.querySelector("iframe");
+    box.querySelectorAll("button[data-fn]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        box.querySelectorAll("button[data-fn]").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        if (frame) frame.src = btn.getAttribute("data-fn");
+      });
+    });
+  });
+</script>
