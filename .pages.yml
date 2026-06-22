@@ -3,79 +3,76 @@ media:
   output: /
 
 content:
+  - name: home
+    label: Domov (úvodná stránka)
+    type: file
+    path: src/content/home.json
+    fields:
+      - { name: heroFoto, label: "Hero – fotka na pozadí", type: image }
+      - { name: heroBadge, label: "Aktuálne (pásik nad nadpisom)", type: string }
+      - { name: heroRiadok1, label: "Nadpis – riadok 1", type: string }
+      - { name: heroRiadok2, label: "Nadpis – riadok 2", type: string }
+      - { name: heroRiadok3, label: "Nadpis – riadok 3 (zvýraznený)", type: string }
+      - { name: heroText, label: "Hlavný text", type: text }
+      - { name: heroButton1Label, label: "Tlačidlo 1 – text", type: string }
+      - { name: heroButton1Url, label: "Tlačidlo 1 – odkaz", type: string }
+      - { name: heroButton2Label, label: "Tlačidlo 2 – text", type: string }
+      - { name: heroButton2Url, label: "Tlačidlo 2 – odkaz", type: string }
+      - { name: stat1Num, label: "Štatistika 1 – číslo", type: string }
+      - { name: stat1Label, label: "Štatistika 1 – popis", type: string }
+      - { name: stat2Num, label: "Štatistika 2 – číslo", type: string }
+      - { name: stat2Label, label: "Štatistika 2 – popis", type: string }
+      - { name: stat3Num, label: "Štatistika 3 – číslo", type: string }
+      - { name: stat3Label, label: "Štatistika 3 – popis", type: string }
+      - { name: kartaTag, label: "Karta – štítok", type: string }
+      - { name: kartaTitulok, label: "Karta – nadpis", type: string }
+      - { name: kartaText, label: "Karta – text", type: text }
+      - { name: kartaDatum, label: "Karta – dátum", type: string }
+      - { name: kartaMiesto, label: "Karta – miesto", type: string }
+      - { name: kartaEmail, label: "Karta – e-mail", type: string }
+      - { name: kartaButtonLabel, label: "Karta – tlačidlo text", type: string }
+      - { name: kartaButtonUrl, label: "Karta – tlačidlo odkaz", type: string }
+
   - name: novinky
     label: Novinky
     type: collection
     path: src/content/novinky
     format: yaml-frontmatter
-    view:
-      fields: [titulok, datum, kategoria]
+    view: { fields: [titulok, datum, kategoria] }
     fields:
-      - name: titulok
-        label: Titulok
-        type: string
-        required: true
-      - name: datum
-        label: Dátum
-        type: date
-        required: true
-      - name: kategoria
-        label: Štítok (napr. Klub, Tábor, Turnaje)
-        type: string
-      - name: perex
-        label: Krátky popis (perex)
-        type: text
-      - name: foto
-        label: Fotka
-        type: image
-      - name: body
-        label: Text novinky
-        type: rich-text
+      - { name: titulok, label: Titulok, type: string, required: true }
+      - { name: datum, label: Dátum, type: date, required: true }
+      - { name: kategoria, label: Štítok, type: string }
+      - { name: perex, label: Krátky popis, type: text }
+      - { name: foto, label: Fotka, type: image }
+      - { name: body, label: Text novinky, type: rich-text }
 
   - name: blog
     label: Blog
     type: collection
     path: src/content/blog
     format: yaml-frontmatter
-    view:
-      fields: [titulok, datum, kategoria]
+    view: { fields: [titulok, datum, kategoria] }
     fields:
-      - name: titulok
-        label: Titulok
-        type: string
-        required: true
-      - name: datum
-        label: Dátum
-        type: date
-        required: true
-      - name: kategoria
-        label: Štítok
-        type: string
-      - name: perex
-        label: Krátky popis (perex)
-        type: text
-      - name: foto
-        label: Fotka
-        type: image
-      - name: body
-        label: Text článku
-        type: rich-text
+      - { name: titulok, label: Titulok, type: string, required: true }
+      - { name: datum, label: Dátum, type: date, required: true }
+      - { name: kategoria, label: Štítok, type: string }
+      - { name: perex, label: Krátky popis, type: text }
+      - { name: foto, label: Fotka, type: image }
+      - { name: body, label: Text článku, type: rich-text }
 
   - name: kategorie
     label: Kategórie
     type: collection
     path: src/content/kategorie
     format: json
-    view:
-      fields: [nazov, poradie, futbalnetSlug]
+    view: { fields: [nazov, poradie, rocnik] }
     fields:
-      - name: nazov
-        label: Názov kategórie
-        type: string
-        required: true
-      - name: poradie
-        label: Poradie v zozname
-        type: number
-      - name: futbalnetSlug
-        label: "FutbalNet tím (napr. u11-m-a). Prázdne = bez tabuľky."
-        type: string
+      - { name: nazov, label: Názov kategórie, type: string, required: true }
+      - { name: poradie, label: Poradie v zozname, type: number }
+      - { name: rocnik, label: "Ročník (napr. 2015)", type: string }
+      - { name: trener, label: Tréner, type: string }
+      - { name: popis, label: Popis kategórie, type: text }
+      - { name: foto, label: Fotka tímu, type: image }
+      - { name: aktualne, label: "Aktuálne (novinky pre túto kategóriu)", type: text }
+      - { name: futbalnetSlug, label: "FutbalNet tím (napr. u11-m-a). Prázdne = bez tabuľky.", type: string }
