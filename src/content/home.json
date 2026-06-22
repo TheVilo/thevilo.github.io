@@ -1,0 +1,23 @@
+{
+  "heroFoto": "/karlovka-hero-image.png",
+  "heroBadge": "Prebieha nábor 2016–2019 • 22. jún 2026",
+  "heroRiadok1": "Jedna štvrť.",
+  "heroRiadok2": "Jeden klub.",
+  "heroRiadok3": "Jedno srdce.",
+  "heroText": "Futbalový klub mládeže Karlova Ves vychováva budúce generácie futbalistov už od roku 2000. Profesionálni tréneri, kvalitné súťaže a komunita, ktorá drží spolu.",
+  "heroButton1Label": "Prihlás dieťa na nábor",
+  "heroButton1Url": "/nabor",
+  "heroButton2Label": "Spoznaj klub",
+  "heroButton2Url": "/o-klube",
+  "stat1Num": "25+", "stat1Label": "rokov tradície",
+  "stat2Num": "300+", "stat2Label": "aktívnych hráčov",
+  "stat3Num": "13", "stat3Label": "kategórií",
+  "kartaTag": "Najbližšia akcia",
+  "kartaTitulok": "Nábor detí 2016–2019",
+  "kartaText": "Hľadáme nových malých futbalistov. Príď si vyskúšať tréning zadarmo!",
+  "kartaDatum": "22. jún 2026, 17:00",
+  "kartaMiesto": "Štadión Molecova, Karlova Ves",
+  "kartaEmail": "pripravkykarlovka@gmail.com",
+  "kartaButtonLabel": "Mám záujem",
+  "kartaButtonUrl": "/nabor"
+}

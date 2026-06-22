@@ -1,7 +1,46 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import body from "../content/pages/index.html?raw";
+import home from "../content/home.json";
+import rest from "../content/index-rest.html?raw";
+
+const h = home;
+const heroStyle = `background: linear-gradient(rgba(21,23,28,0.85), rgba(21,23,28,0.85)), url('${h.heroFoto}'); background-size: cover; background-position: center;`;
 ---
-<Layout title={"FKM Karlova Ves — Futbalový klub mládeže | Jedna štvrť. Jeden klub. Jedno srdce."}>
-  <Fragment set:html={body} />
+<Layout title="FKM Karlova Ves — Futbalový klub mládeže | Jedna štvrť. Jeden klub. Jedno srdce.">
+  <section class="hero" style={heroStyle}>
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <span class="hero-badge"><span class="dot"></span>{h.heroBadge}</span>
+          <h1>{h.heroRiadok1}<br />{h.heroRiadok2}<br /><span class="accent">{h.heroRiadok3}</span></h1>
+          <p class="hero-lead">{h.heroText}</p>
+          <div class="hero-actions">
+            <a href={h.heroButton1Url} class="btn btn-primary">{h.heroButton1Label}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href={h.heroButton2Url} class="btn btn-ghost">{h.heroButton2Label}</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><div class="num">{h.stat1Num}</div><div class="lbl">{h.stat1Label}</div></div>
+            <div class="hero-stat"><div class="num">{h.stat2Num}</div><div class="lbl">{h.stat2Label}</div></div>
+            <div class="hero-stat"><div class="num">{h.stat3Num}</div><div class="lbl">{h.stat3Label}</div></div>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <span class="hc-tag">● {h.kartaTag}</span>
+          <h3>{h.kartaTitulok}</h3>
+          <p>{h.kartaText}</p>
+          <div class="hc-meta">
+            <div class="hc-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>{h.kartaDatum}</div>
+            <div class="hc-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>{h.kartaMiesto}</div>
+            <div class="hc-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 4l8 8 8-8"/></svg>{h.kartaEmail}</div>
+          </div>
+          <a href={h.kartaButtonUrl} class="btn btn-primary">{h.kartaButtonLabel}</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <Fragment set:html={rest} />
 </Layout>

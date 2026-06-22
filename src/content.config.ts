@@ -6,6 +6,11 @@ const kategorie = defineCollection({
   schema: z.object({
     nazov: z.string(),
     poradie: z.number().default(0),
+    rocnik: z.string().optional().default(""),
+    trener: z.string().optional().default(""),
+    popis: z.string().optional().default(""),
+    foto: z.string().optional().default(""),
+    aktualne: z.string().optional().default(""),
     futbalnetSlug: z.string().optional().default(""),
   }),
 });
@@ -22,7 +27,6 @@ const novinky = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/novinky" }),
   schema: clanokSchema,
 });
-
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
   schema: clanokSchema,

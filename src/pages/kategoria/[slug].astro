@@ -2,17 +2,46 @@
 import Layout from "../../layouts/Layout.astro";
 import FutbalNet from "../../components/FutbalNet.astro";
 import { getCollection } from "astro:content";
-import sablona from "../../content/categorybody.html?raw";
 
 export async function getStaticPaths() {
   const kategorie = await getCollection("kategorie");
   return kategorie.map((k) => ({ params: { slug: k.id }, props: { k } }));
 }
-
 const { k } = Astro.props;
-const body = sablona.replaceAll("__NAZOV__", k.data.nazov);
+const d = k.data;
 ---
-<Layout title={`${k.data.nazov} • FKM Karlova Ves`}>
-  <Fragment set:html={body} />
-  <FutbalNet slug={k.data.futbalnetSlug} />
+<Layout title={`${d.nazov} • FKM Karlova Ves`} description={d.popis}>
+  <section class="hero" style="min-height:auto;padding-block:64px;">
+    <div class="container">
+      <span class="hero-badge"><span class="dot"></span>Kategória{d.rocnik ? ` · ročník ${d.rocnik}` : ""}</span>
+      <h1>{d.nazov}</h1>
+      {d.popis && <p class="hero-lead">{d.popis}</p>}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="news-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+        <div class="card" style="padding:1.4rem;border:1px solid #eee;border-radius:12px;">
+          <strong style="display:block;color:var(--brand,#E11D2A);">Ročník</strong>{d.rocnik || "—"}
+        </div>
+        <div class="card" style="padding:1.4rem;border:1px solid #eee;border-radius:12px;">
+          <strong style="display:block;color:var(--brand,#E11D2A);">Tréner</strong>{d.trener || "Doplníme"}
+        </div>
+      </div>
+
+      {d.foto && <img src={d.foto} alt={d.nazov} style="width:100%;border-radius:12px;margin-top:1.5rem;" />}
+
+      {d.aktualne && (
+        <div class="card" style="margin-top:1.5rem;padding:1.5rem;border-left:4px solid var(--brand,#E11D2A);background:#fff5f5;border-radius:8px;">
+          <span class="eyebrow">Aktuálne</span>
+          <p style="margin:.4rem 0 0;white-space:pre-line;">{d.aktualne}</p>
+        </div>
+      )}
+
+      <p style="margin-top:1.5rem;"><a href="/nabor" class="btn btn-primary">Prihlásiť dieťa do tejto kategórie</a></p>
+    </div>
+  </section>
+
+  <FutbalNet slug={d.futbalnetSlug} />
 </Layout>
