@@ -1,0 +1,81 @@
+media:
+  input: public
+  output: /
+
+content:
+  - name: novinky
+    label: Novinky
+    type: collection
+    path: src/content/novinky
+    format: yaml-frontmatter
+    view:
+      fields: [titulok, datum, kategoria]
+    fields:
+      - name: titulok
+        label: Titulok
+        type: string
+        required: true
+      - name: datum
+        label: Dátum
+        type: date
+        required: true
+      - name: kategoria
+        label: Štítok (napr. Klub, Tábor, Turnaje)
+        type: string
+      - name: perex
+        label: Krátky popis (perex)
+        type: text
+      - name: foto
+        label: Fotka
+        type: image
+      - name: body
+        label: Text novinky
+        type: rich-text
+
+  - name: blog
+    label: Blog
+    type: collection
+    path: src/content/blog
+    format: yaml-frontmatter
+    view:
+      fields: [titulok, datum, kategoria]
+    fields:
+      - name: titulok
+        label: Titulok
+        type: string
+        required: true
+      - name: datum
+        label: Dátum
+        type: date
+        required: true
+      - name: kategoria
+        label: Štítok
+        type: string
+      - name: perex
+        label: Krátky popis (perex)
+        type: text
+      - name: foto
+        label: Fotka
+        type: image
+      - name: body
+        label: Text článku
+        type: rich-text
+
+  - name: kategorie
+    label: Kategórie
+    type: collection
+    path: src/content/kategorie
+    format: json
+    view:
+      fields: [nazov, poradie, futbalnetSlug]
+    fields:
+      - name: nazov
+        label: Názov kategórie
+        type: string
+        required: true
+      - name: poradie
+        label: Poradie v zozname
+        type: number
+      - name: futbalnetSlug
+        label: "FutbalNet tím (napr. u11-m-a). Prázdne = bez tabuľky."
+        type: string
