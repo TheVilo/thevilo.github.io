@@ -4,34 +4,43 @@ media:
 
 content:
   - name: home
-    label: Domov (úvodná stránka)
+    label: Domov
     type: file
     path: src/content/home.json
     fields:
-      - { name: heroFoto, label: "Hero – fotka na pozadí", type: image }
-      - { name: heroBadge, label: "Aktuálne (pásik nad nadpisom)", type: string }
-      - { name: heroRiadok1, label: "Nadpis – riadok 1", type: string }
-      - { name: heroRiadok2, label: "Nadpis – riadok 2", type: string }
-      - { name: heroRiadok3, label: "Nadpis – riadok 3 (zvýraznený)", type: string }
-      - { name: heroText, label: "Hlavný text", type: text }
-      - { name: heroButton1Label, label: "Tlačidlo 1 – text", type: string }
-      - { name: heroButton1Url, label: "Tlačidlo 1 – odkaz", type: string }
-      - { name: heroButton2Label, label: "Tlačidlo 2 – text", type: string }
-      - { name: heroButton2Url, label: "Tlačidlo 2 – odkaz", type: string }
-      - { name: stat1Num, label: "Štatistika 1 – číslo", type: string }
-      - { name: stat1Label, label: "Štatistika 1 – popis", type: string }
-      - { name: stat2Num, label: "Štatistika 2 – číslo", type: string }
-      - { name: stat2Label, label: "Štatistika 2 – popis", type: string }
-      - { name: stat3Num, label: "Štatistika 3 – číslo", type: string }
-      - { name: stat3Label, label: "Štatistika 3 – popis", type: string }
-      - { name: kartaTag, label: "Karta – štítok", type: string }
-      - { name: kartaTitulok, label: "Karta – nadpis", type: string }
-      - { name: kartaText, label: "Karta – text", type: text }
-      - { name: kartaDatum, label: "Karta – dátum", type: string }
-      - { name: kartaMiesto, label: "Karta – miesto", type: string }
-      - { name: kartaEmail, label: "Karta – e-mail", type: string }
-      - { name: kartaButtonLabel, label: "Karta – tlačidlo text", type: string }
-      - { name: kartaButtonUrl, label: "Karta – tlačidlo odkaz", type: string }
+      - name: hero
+        label: Hero — úvodný blok
+        type: object
+        fields:
+          - { name: foto, label: Fotka na pozadí, type: image }
+          - { name: badge, label: "Aktuálne (pásik nad nadpisom)", type: string }
+          - { name: riadok1, label: "Nadpis – riadok 1", type: string }
+          - { name: riadok2, label: "Nadpis – riadok 2", type: string }
+          - { name: riadok3, label: "Nadpis – riadok 3 (zvýraznený)", type: string }
+          - { name: text, label: Hlavný text, type: text }
+          - { name: button1Label, label: "Tlačidlo 1 – text", type: string }
+          - { name: button1Url, label: "Tlačidlo 1 – odkaz", type: string }
+          - { name: button2Label, label: "Tlačidlo 2 – text", type: string }
+          - { name: button2Url, label: "Tlačidlo 2 – odkaz", type: string }
+      - name: staty
+        label: Štatistiky (čísla v hero)
+        type: object
+        list: true
+        fields:
+          - { name: num, label: Číslo, type: string }
+          - { name: label, label: Popis, type: string }
+      - name: karta
+        label: Karta — najbližšia akcia
+        type: object
+        fields:
+          - { name: tag, label: Štítok, type: string }
+          - { name: titulok, label: Nadpis, type: string }
+          - { name: text, label: Text, type: text }
+          - { name: datum, label: Dátum, type: string }
+          - { name: miesto, label: Miesto, type: string }
+          - { name: email, label: E-mail, type: string }
+          - { name: buttonLabel, label: "Tlačidlo – text", type: string }
+          - { name: buttonUrl, label: "Tlačidlo – odkaz", type: string }
 
   - name: novinky
     label: Novinky
@@ -74,5 +83,5 @@ content:
       - { name: trener, label: Tréner, type: string }
       - { name: popis, label: Popis kategórie, type: text }
       - { name: foto, label: Fotka tímu, type: image }
-      - { name: aktualne, label: "Aktuálne (novinky pre túto kategóriu)", type: text }
-      - { name: futbalnetSlug, label: "FutbalNet tím (napr. u11-m-a). Prázdne = bez tabuľky.", type: string }
+      - { name: aktualne, label: "Aktuálne (pre túto kategóriu)", type: text }
+      - { name: futbalnetSlug, label: "FutbalNet tím (napr. u11-m-a)", type: string }
