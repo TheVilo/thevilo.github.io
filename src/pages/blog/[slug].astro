@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const items = await getCollection("blog");
+  return items.map((b) => ({ params: { slug: b.id }, props: { b } }));
+}
+const { b } = Astro.props;
+const { Content } = await render(b);
+const datum = b.data.datum.toLocaleDateString("sk-SK", { day: "numeric", month: "long", year: "numeric" });
+---
+<Layout title={`${b.data.titulok} • FKM Karlova Ves`} description={b.data.perex}>
+  <section class="hero" style="min-height:auto;padding-block:64px;">
+    <div class="container">
+      <span class="eyebrow">{b.data.kategoria} · {datum}</span>
+      <h1>{b.data.titulok}</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container" style="max-width:760px;">
+      {b.data.foto && <img src={b.data.foto} alt={b.data.titulok} style="width:100%;border-radius:12px;margin-bottom:1.5rem;" />}
+      <Content />
+      <p style="margin-top:2rem;"><a href="/blog" class="btn btn-outline">← Všetky články</a></p>
+    </div>
+  </section>
+</Layout>

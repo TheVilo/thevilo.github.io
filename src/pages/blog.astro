@@ -2,18 +2,18 @@
 import Layout from "../layouts/Layout.astro";
 import ClankyGrid from "../components/ClankyGrid.astro";
 import { getCollection } from "astro:content";
-const items = (await getCollection("novinky")).sort(
+const items = (await getCollection("blog")).sort(
   (a, b) => b.data.datum.getTime() - a.data.datum.getTime()
 );
 ---
-<Layout title="Novinky • FKM Karlova Ves">
+<Layout title="Blog • FKM Karlova Ves">
   <section class="stats-band">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Novinky a aktivity</span>
-        <h2>Čo sa deje v klube</h2>
+        <span class="eyebrow">Blog</span>
+        <h2>Články a rady pre rodičov</h2>
       </div>
-      <ClankyGrid items={items} base="/novinky" />
+      <ClankyGrid items={items} base="/blog" />
     </div>
   </section>
 </Layout>

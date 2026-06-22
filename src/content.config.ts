@@ -10,4 +10,22 @@ const kategorie = defineCollection({
   }),
 });
 
-export const collections = { kategorie };
+const clanokSchema = z.object({
+  titulok: z.string(),
+  datum: z.coerce.date(),
+  kategoria: z.string().optional().default("Klub"),
+  perex: z.string().optional().default(""),
+  foto: z.string().optional().default(""),
+});
+
+const novinky = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/novinky" }),
+  schema: clanokSchema,
+});
+
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
+  schema: clanokSchema,
+});
+
+export const collections = { kategorie, novinky, blog };
