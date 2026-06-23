@@ -12,9 +12,18 @@
     "button2Url": "/o-klube"
   },
   "staty": [
-    { "num": "25+", "label": "rokov tradície" },
-    { "num": "300+", "label": "aktívnych hráčov" },
-    { "num": "13", "label": "kategórií" }
+    {
+      "num": "15+",
+      "label": "rokov tradície"
+    },
+    {
+      "num": "300+",
+      "label": "aktívnych hráčov"
+    },
+    {
+      "num": "13",
+      "label": "kategórií"
+    }
   ],
   "karta": {
     "tag": "Najbližšia akcia",
